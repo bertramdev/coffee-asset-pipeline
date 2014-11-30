@@ -39,7 +39,33 @@ publishing {
     publications {
         maven(MavenPublication) {
             artifactId 'coffee-asset-pipeline'
-
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name 'coffee-asset-pipeline'
+                    description 'Coffeescript Transpiler Extension for the JVM Based Asset-Pipeline.'
+                    url 'https://github.com/bertramdev/coffee-asset-pipeline'
+                    scm {
+                        url 'https://github.com/bertramdev/coffee-asset-pipeline'
+                        connection 'scm:https://bertramdev@github.com/bertramdev/coffee-asset-pipeline.git'
+                        developerConnection 'scm:git://github.com/bertramdev/coffee-asset-pipeline.git'
+                    }
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'davydotcom'
+                            name 'David Estes'
+                            email 'davydotcom@gmail.com'
+                        }
+                    }
+                }
+            }
             from components.java
             artifact sourcesJar
             artifact javadocJar
