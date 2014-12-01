@@ -21,7 +21,7 @@ buildscript {
   }
   dependencies {
     classpath 'com.bertramlabs.plugins.asset-pipeline-gradle:2.0.6'
-    classpath 'com.bertramlabs.plugins.coffee-asset-pipeline:2.0.5'
+    classpath 'com.bertramlabs.plugins.coffee-asset-pipeline:2.0.6'
   }
 }
 ```
