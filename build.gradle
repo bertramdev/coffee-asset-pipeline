@@ -6,12 +6,7 @@ apply plugin: 'com.jfrog.bintray'
 group = 'com.bertramlabs.plugins'
 version = '2.0.7'
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
-if(!project.hasProperty('bintrayUser')) {
-    bintrayUser = 'test'
-}
-if(!project.hasProperty('bintrayKey')) {
-    bintrayKey = 'empty'
-}
+
 buildscript {
     repositories {
         mavenLocal()
@@ -82,8 +77,10 @@ publishing {
 }
 
 bintray {
-    user = bintrayUser
-    key = bintrayKey
+     if(project.hasProperty('bintrayUser')) {
+        user = bintrayUser
+        key = bintrayKey
+    }
     publications = ['maven']
     pkg {
         repo = 'asset-pipeline'
